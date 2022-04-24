@@ -1,0 +1,44 @@
+
+angle = 40;
+t = 60;
+
+function setup() { 
+  createCanvas(800, 800);
+  stroke(255);
+  angleMode(DEGREES);
+}
+
+function draw() {
+  background(50,50,50);
+  translate(width/2, height/2);
+  
+  drawFractal(100,t);
+}
+ 
+function drawFractal(len,t){
+  if (len <5){
+    return;s
+  }  
+  
+  noFill();
+  circle (0,0, t);
+  rotate (angle);
+  line (0,0,0,-len);
+ 
+  
+  push(); //salva o jeito atual
+  translate (0, -len);
+  drawFractal(len *0.7, t * 0.7);
+  pop(); //volta o estado
+  
+ 
+  rotate (-angle*2);
+  line (0,0,0, -len);
+  
+  push();
+  translate(0, -len);
+  drawFractal(len * 0.7, t *0.7);
+  pop();
+}
+
+
